@@ -1,4 +1,4 @@
-enum TipoTransaccion {
+export enum TipoTransaccion {
   Ingreso = 'ingreso', Egreso = 'egreso',
 }
 
@@ -54,8 +54,13 @@ export const getEgresosTotalPorcentaje = async() => {
   return Number(porcentaje.toFixed(2));
 }
 
-export const agregarTransaccion = (transaccion: Transaccion) => {
-  transacciones = [ ...transacciones, transaccion ];
+export const agregarTransaccion = async (transaccion: Transaccion) => {
+
+  console.log('agregarTransaccion', transaccion);
+  new Promise((resolve) => {
+    transacciones = [ ...transacciones, transaccion ];
+    resolve(transaccion);
+  });
 }
 
 export const eliminarTransaccion = (id: string) => {

@@ -2,11 +2,12 @@ import './App.css'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Saldo, TotalIngresos, TotalGastos, PorcentajeGastos, RegistroTransaccion, Movimientos } from "./components"
 
-const queryClient = new QueryClient()
+// eslint-disable-next-line react-refresh/only-export-components
+export const queryClientApp = new QueryClient()
 
 function App() {
   return (<>
-    <QueryClientProvider client={ queryClient }>
+    <QueryClientProvider client={ queryClientApp }>
       <div className={ "grid grid-cols-1 grid-rows-2 gap-14" }>
         <div className={ "flex flex-col gap-4" }>
           <h1 className={ "text-4xl text-cyan-950" }>Presupuesto de Septiembre 2023</h1>

@@ -16,7 +16,7 @@ function Movimientos() {
   };
 
   const porcentajePorItem = (item: Transaccion) => {
-    return ((item.monto * 100) / totalIngresos!);
+    return Number((item.monto * 100) / totalIngresos!).toFixed(2);
   }
 
   return (<div className="w-full mx-auto p-4">
@@ -40,7 +40,7 @@ function Movimientos() {
       { activeTab === 0 && (<>
         <div className={ "flex flex-col gap-2" }>
           { ingresos?.map((ingreso) => {
-            return (<div className={ "flex flex-row justify-around border-cyan-950 border-2 py-2" }>
+            return (<div className={ "flex flex-row justify-around border-cyan-950 border-2 py-2" } key={ingreso.id}>
               <div>{ ingreso.concepto }</div>
               <div>+ { Number(ingreso.monto).toFixed(2) }<span
                 className={ "rounded-lg bg-cyan-950 text-amber-50 p-1 text-sm mx-2" }>{ porcentajePorItem(ingreso) } %</span>
@@ -52,7 +52,7 @@ function Movimientos() {
       { activeTab === 1 && (<>
         <div className={ "flex flex-col gap-2" }>
           { egresos?.map((egreso) => {
-            return (<div className={ "flex flex-row justify-around border-cyan-950 border-2 py-2" }>
+            return (<div className={ "flex flex-row justify-around border-cyan-950 border-2 py-2" } key={egreso.id}>
               <div>{ egreso.concepto }</div>
               <div>- { Number(egreso.monto).toFixed(2) } <span
                 className={ "rounded-lg bg-cyan-950 text-amber-50 p-1 text-sm mx-2" }>{ porcentajePorItem(egreso) } %</span>
