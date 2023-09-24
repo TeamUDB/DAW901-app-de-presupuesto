@@ -25,7 +25,7 @@ const RegistroTransaccion = () => {
     if (Number(monto) > 0) {
       const transaccion: Transaccion = {
         concepto: descripcion || 'Movimiento sin concepto',
-        monto: Number(monto),
+        monto: TipoTransaccion.Ingreso === tipo ? Number(monto) : Number(monto) * -1,
         tipo: TipoTransaccion.Ingreso === tipo ? TipoTransaccion.Ingreso : TipoTransaccion.Egreso,
         id: uuidv4(),
         fecha: new Date()

@@ -3,6 +3,7 @@ import { MdDelete } from "react-icons/md";
 import { useMutation } from "@tanstack/react-query";
 import { useConfirmacionModal, useQueryInvalidate } from "../hooks";
 import { ConfirmacionModal } from "./index.ts";
+import Money from "../filters/Money.ts";
 
 
 type props = {
@@ -24,7 +25,7 @@ function Movimiento(props: props) {
   return (<>
     <div className={ "flex flex-row justify-around border-cyan-950 border-2 py-2" } key={ props.movimiento.id }>
       <div>{ props.movimiento.concepto }</div>
-      <div className={ "flex flex-row" }>+ { Number(props.movimiento.monto).toFixed(2) }
+      <div className={ "flex flex-row" }> { Money(Number(props.movimiento.monto)) }
         <span className={ "rounded-lg bg-cyan-950 text-amber-50 p-1 text-sm mx-2" }>
                   { props.porcentajePorItem(props.movimiento) } %
                 </span>

@@ -15,7 +15,8 @@ function Movimientos() {
   };
 
   const porcentajePorItem = (item: Transaccion) => {
-    return Number((item.monto * 100) / totalIngresos!).toFixed(2);
+    if (!totalIngresos) return "0";
+    return Math.abs(Number((item.monto * 100) / totalIngresos!)).toFixed(2);
   }
   return (<div className="w-full mx-auto p-4">
     <div className="flex space-x-0 uppercase">
@@ -40,6 +41,9 @@ function Movimientos() {
           { ingresos?.map((ingreso) => {
             return (<Movimiento movimiento={ ingreso } porcentajePorItem={ porcentajePorItem } key={ ingreso.id }/>);
           }) }
+          {
+            ingresos?.length === 0 && (<div className={ "text-center text-amber-950" }>No hay ingresos registrados</div>)
+          }
         </div>
       </>) }
       { activeTab === 1 && (<>
@@ -47,6 +51,9 @@ function Movimientos() {
           { egresos?.map((egreso) => {
             return (<Movimiento movimiento={ egreso } porcentajePorItem={ porcentajePorItem } key={ egreso.id }/>);
           }) }
+          {
+            egresos?.length === 0 && (<div className={ "text-center text-amber-950" }>No hay egresos registrados</div>)
+          }
         </div>
       </>) }
     </div>
