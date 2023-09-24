@@ -3,6 +3,7 @@ import { Transaccion } from "../services/presupuesto-service.ts";
 import useIngresos from "../hooks/useIngresos.tsx";
 import useEgresos from "../hooks/useEgresos.tsx";
 import useTotalIngresos from "../hooks/useTotalIngresos.tsx";
+import Movimiento from "./Movimiento.tsx";
 
 function Movimientos() {
   const [ activeTab, setActiveTab ] = useState(0);
@@ -18,7 +19,6 @@ function Movimientos() {
   const porcentajePorItem = (item: Transaccion) => {
     return Number((item.monto * 100) / totalIngresos!).toFixed(2);
   }
-
   return (<div className="w-full mx-auto p-4">
     <div className="flex space-x-0 uppercase">
       <div
@@ -40,24 +40,14 @@ function Movimientos() {
       { activeTab === 0 && (<>
         <div className={ "flex flex-col gap-2" }>
           { ingresos?.map((ingreso) => {
-            return (<div className={ "flex flex-row justify-around border-cyan-950 border-2 py-2" } key={ingreso.id}>
-              <div>{ ingreso.concepto }</div>
-              <div>+ { Number(ingreso.monto).toFixed(2) }<span
-                className={ "rounded-lg bg-cyan-950 text-amber-50 p-1 text-sm mx-2" }>{ porcentajePorItem(ingreso) } %</span>
-              </div>
-            </div>);
+            return(<Movimiento movimiento={ingreso} porcentajePorItem={porcentajePorItem} key={ingreso.id}/>);
           }) }
         </div>
       </>) }
       { activeTab === 1 && (<>
         <div className={ "flex flex-col gap-2" }>
           { egresos?.map((egreso) => {
-            return (<div className={ "flex flex-row justify-around border-cyan-950 border-2 py-2" } key={egreso.id}>
-              <div>{ egreso.concepto }</div>
-              <div>- { Number(egreso.monto).toFixed(2) } <span
-                className={ "rounded-lg bg-cyan-950 text-amber-50 p-1 text-sm mx-2" }>{ porcentajePorItem(egreso) } %</span>
-              </div>
-            </div>);
+            return(<Movimiento movimiento={egreso} porcentajePorItem={porcentajePorItem} key={egreso.id}/>);
           }) }
         </div>
       </>) }

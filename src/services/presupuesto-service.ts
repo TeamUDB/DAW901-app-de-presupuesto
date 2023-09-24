@@ -63,6 +63,9 @@ export const agregarTransaccion = async (transaccion: Transaccion) => {
   });
 }
 
-export const eliminarTransaccion = (id: string) => {
-  transacciones = transacciones.filter(t => t.id !== id);
+export const eliminarTransaccion = async (id: string) => {
+  return new Promise((resolve) => {
+    transacciones = transacciones.filter(t => t.id !== id);
+    resolve('Ok');
+  })
 }

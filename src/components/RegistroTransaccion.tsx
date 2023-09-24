@@ -1,9 +1,9 @@
 import { MontoInput } from "./index.ts";
 import { useMutation } from "@tanstack/react-query";
-import { queryClientApp as queryClient } from "../App.tsx";
 import { agregarTransaccion, TipoTransaccion, Transaccion } from "../services/presupuesto-service.ts";
 import React, { ChangeEvent, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import UseQueryInvalidate from "../hooks/useQueryInvalidate.tsx";
 
 const RegistroTransaccion = () => {
 
@@ -13,24 +13,7 @@ const RegistroTransaccion = () => {
 
   const agregar = useMutation({
     mutationFn: agregarTransaccion, onSuccess: async () => {
-      await queryClient.invalidateQueries({
-        queryKey: [ 'ingresos' ]
-      });
-      await queryClient.invalidateQueries({
-        queryKey: [ 'egresos' ]
-      });
-      await queryClient.invalidateQueries({
-        queryKey: [ 'total-ingresos' ]
-      });
-      await queryClient.invalidateQueries({
-        queryKey: [ 'total-egresos' ]
-      });
-      await queryClient.invalidateQueries({
-        queryKey: [ 'balance' ]
-      });
-      await queryClient.invalidateQueries({
-        queryKey: [ 'total-egresos-porcentaje' ]
-      });
+      await UseQueryInvalidate();
       setTipo(TipoTransaccion.Ingreso);
       setDescripcion("");
       setMonto("0");
