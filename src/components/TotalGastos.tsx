@@ -1,4 +1,4 @@
-import useTotalEgresos from "../hooks/useTotalEgresos.tsx";
+import { useTotalEgresos } from "../hooks";
 
 const TotalGastos = () => {
   const { totalEgresos }: { totalEgresos: number | undefined } = useTotalEgresos();

@@ -5,6 +5,16 @@ import TotalIngresos from "./TotalIngresos.tsx";
 import RegistroTransaccion from "./RegistroTransaccion.tsx";
 import Movimientos from "./Movimientos.tsx";
 import MontoInput from "./MontoInput.tsx";
+import ConfirmacionModal from "./ConfirmacionModal.tsx";
 
 
-export { PorcentajeGastos, TotalGastos, TotalIngresos, Saldo, RegistroTransaccion, Movimientos, MontoInput };
+export {
+  PorcentajeGastos,
+  TotalGastos,
+  TotalIngresos,
+  Saldo,
+  RegistroTransaccion,
+  Movimientos,
+  MontoInput,
+  ConfirmacionModal
+};

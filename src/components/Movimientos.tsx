@@ -1,8 +1,6 @@
 import { SetStateAction, useState } from "react";
 import { Transaccion } from "../services/presupuesto-service.ts";
-import useIngresos from "../hooks/useIngresos.tsx";
-import useEgresos from "../hooks/useEgresos.tsx";
-import useTotalIngresos from "../hooks/useTotalIngresos.tsx";
+import { useIngresos, useEgresos, useTotalIngresos } from "../hooks";
 import Movimiento from "./Movimiento.tsx";
 
 function Movimientos() {
@@ -40,14 +38,14 @@ function Movimientos() {
       { activeTab === 0 && (<>
         <div className={ "flex flex-col gap-2" }>
           { ingresos?.map((ingreso) => {
-            return(<Movimiento movimiento={ingreso} porcentajePorItem={porcentajePorItem} key={ingreso.id}/>);
+            return (<Movimiento movimiento={ ingreso } porcentajePorItem={ porcentajePorItem } key={ ingreso.id }/>);
           }) }
         </div>
       </>) }
       { activeTab === 1 && (<>
         <div className={ "flex flex-col gap-2" }>
           { egresos?.map((egreso) => {
-            return(<Movimiento movimiento={egreso} porcentajePorItem={porcentajePorItem} key={egreso.id}/>);
+            return (<Movimiento movimiento={ egreso } porcentajePorItem={ porcentajePorItem } key={ egreso.id }/>);
           }) }
         </div>
       </>) }

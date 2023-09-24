@@ -1,4 +1,4 @@
-import useBalance from "../hooks/useBalance.tsx";
+import { useBalance } from "../hooks";
 
 const Saldo = () => {
   const { data } = useBalance();

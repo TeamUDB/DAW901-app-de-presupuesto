@@ -1,4 +1,4 @@
-import useTotalIngresos from "../hooks/useTotalIngresos.tsx";
+import { useTotalIngresos } from "../hooks";
 
 const TotalIngresos = () => {
   const { totalIngresos }: { totalIngresos: number | undefined } = useTotalIngresos();

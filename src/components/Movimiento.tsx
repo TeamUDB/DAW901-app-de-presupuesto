@@ -1,9 +1,9 @@
-import {
-  eliminarTransaccion, Transaccion
-} from "../services/presupuesto-service.ts";
+import { eliminarTransaccion, Transaccion } from "../services/presupuesto-service.ts";
 import { MdDelete } from "react-icons/md";
 import { useMutation } from "@tanstack/react-query";
-import UseQueryInvalidate from "../hooks/useQueryInvalidate.tsx";
+import { useConfirmacionModal, useQueryInvalidate } from "../hooks";
+import { ConfirmacionModal } from "./index.ts";
+
 
 type props = {
   movimiento: Transaccion; porcentajePorItem: (item: Transaccion) => string;
@@ -11,12 +11,14 @@ type props = {
 
 function Movimiento(props: props) {
 
+  const { modalVisible, showModal, hideModal } = useConfirmacionModal()
+
   const deleteItem = useMutation({
-    mutationFn: (id: string) => eliminarTransaccion(id), onSuccess: UseQueryInvalidate
+    mutationFn: (id: string) => eliminarTransaccion(id), onSuccess: useQueryInvalidate
   })
 
   const handleDelete = () => {
-    deleteItem.mutate(props.movimiento.id);
+    showModal("¿Estás seguro de que deseas eliminar este elemento?");
   }
 
   return (<>
@@ -31,6 +33,18 @@ function Movimiento(props: props) {
         </div>
       </div>
     </div>
+    { modalVisible && (<ConfirmacionModal
+        isOpen={ modalVisible }
+        message="¿Estás seguro de que deseas realizar esta acción?"
+        onConfirm={ () => {
+          console.log("Acción confirmada en el modal");
+          deleteItem.mutate(props.movimiento.id);
+          hideModal();
+        } }
+        onCancel={ () => {
+          hideModal();
+        } }
+      />) }
   </>);
 }
 
