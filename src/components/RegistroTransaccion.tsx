@@ -1,3 +1,5 @@
+import { MontoInput } from "./index.ts";
+
 const RegistroTransaccion = () => {
   return (<>
     <div className={"flex flex-col gap-8"}>
@@ -10,7 +12,7 @@ const RegistroTransaccion = () => {
             <option value="gasto">Gasto</option>
           </select>
           <input type="text" className={ "border border-gray-300 p-2 rounded-lg w-full my-2" } placeholder={ "Descripción" }/>
-          <input type="text" className={ "border border-gray-300 p-2 rounded-lg w-full my-2" } placeholder={ "Monto" }/>
+          <MontoInput/>
           <button className={ "bg-cyan-950 text-amber-100 py-2 px-4 rounded-lg w-full my-2" }>Agregar</button>
         </form>
       </div>
