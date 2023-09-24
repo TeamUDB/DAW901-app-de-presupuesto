@@ -1,27 +1,20 @@
-# React + TypeScript + Vite
+# Desarrollo de Aplicaciones Web con Software Interpretados en el Cliente
+## DAW901
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### DESAFÍO 1: App de presupuesto
 
-Currently, two official plugins are available:
+#### Objetivo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Se desea realizar una aplicación en JavaScript que permita manejar el flujo de ingresos y egresos de una persona. 
+De forma que, el usuario pueda valorar el porcentaje de gastos que ha tenido durante un mes basado en su ingreso.
 
-## Expanding the ESLint configuration
+#### Estudiante
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Victor Hugo Cornejo Calderon - CC222324
 
-- Configure the top-level `parserOptions` property like this:
+#### Link publico para ver el resultado
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+- https://presupuesto.victorcornejo.com/
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
+

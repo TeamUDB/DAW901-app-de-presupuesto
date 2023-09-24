@@ -6,7 +6,9 @@ export type Transaccion = {
   id: string, tipo: TipoTransaccion, fecha: Date, concepto: string, monto: number,
 }
 
-let transacciones: Transaccion[] = [ {
+let transacciones: Transaccion[] = [
+  /*
+  {
   id: 'e39af8db-aa87-4f57-a94e-7d89fc8bf84d',
   tipo: TipoTransaccion.Ingreso,
   fecha: new Date(),
@@ -30,7 +32,9 @@ let transacciones: Transaccion[] = [ {
   fecha: new Date(),
   concepto: 'Servicios básicos',
   monto: -100,
-} ];
+} */
+];
+
 
 export const getIngresos = async () => {
   return new Promise<Transaccion[]>((resolve) => {
